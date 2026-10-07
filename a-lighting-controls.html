@@ -14,7 +14,12 @@
 <body>
   <h1>Color carousel</h1>
   <p>Three old stage-light presets. Try both directions and wrap around.</p>
-  <div class="panel"><div id="swatch" aria-hidden="true"></div><strong id="label" aria-live="polite"></strong></div>
+
+  <div class="panel">
+    <div id="swatch" aria-hidden="true"></div>
+    <strong id="label" aria-live="polite"></strong>
+  </div>
+
   <button id="previous" type="button">Previous</button>
   <button id="next" type="button">Next</button>
 
@@ -26,24 +31,20 @@
     ];
 
     let presetIndex = 0;
-    let updates_enabled = true;
+    
 
     const label = document.querySelector("#label");
     const swatch = document.querySelector("#swatch");
 
     function update() {
-      if (updates_enabled) {
-        let item = presets[0];
+      let item = presets[0];
 
-        for (let i = 0; i < presets.length; i++) {
-          if (i === presetIndex) item = presets[i];
-        }
-
-        label.textContent = item.name;
-        swatch.style.backgroundColor = item.color;
-      } else {
-        console.log("ignored update while updates are disabled");
+      for (let i = 0; i < presets.length; i++) {
+        if (i === presetIndex) item = presets[i];
       }
+
+      label.textContent = item.name;
+      swatch.style.backgroundColor = item.color;
     }
 
     document.querySelector("#next").addEventListener("click", () => {
@@ -59,5 +60,5 @@
     update();
   </script>
 </body>
-</html>
+</html
 
