@@ -17,23 +17,28 @@
   <div class="panel"><div id="swatch" aria-hidden="true"></div><strong id="label" aria-live="polite"></strong></div>
   <button id="previous" type="button">Previous</button>
   <button id="next" type="button">Next</button>
+
   <script>
-    const X = [
+    const presets = [
       { name: "Amber", color: "#e6a23c" },
       { name: "Indigo", color: "#6555aa" },
       { name: "Teal", color: "#248a87" },
     ];
-    let x = 0;
+
+    let presetIndex = 0;
     let updates_enabled = true;
+
     const label = document.querySelector("#label");
     const swatch = document.querySelector("#swatch");
 
     function update() {
       if (updates_enabled) {
-        let item = X[0];
-        for (let i = 0; i < X.length; i++) {
-          if (i === x) item = X[i];
+        let item = presets[0];
+
+        for (let i = 0; i < presets.length; i++) {
+          if (i === presetIndex) item = presets[i];
         }
+
         label.textContent = item.name;
         swatch.style.backgroundColor = item.color;
       } else {
@@ -42,14 +47,17 @@
     }
 
     document.querySelector("#next").addEventListener("click", () => {
-      x = (x + 1) % X.length;
+      presetIndex = (presetIndex + 1) % presets.length;
       update();
     });
+
     document.querySelector("#previous").addEventListener("click", () => {
-      x = (x - 1 + X.length) % X.length;
+      presetIndex = (presetIndex - 1 + presets.length) % presets.length;
       update();
     });
+
     update();
   </script>
 </body>
 </html>
+
