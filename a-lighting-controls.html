@@ -31,17 +31,12 @@
     ];
 
     let presetIndex = 0;
-    
 
     const label = document.querySelector("#label");
     const swatch = document.querySelector("#swatch");
 
     function update() {
-      let item = presets[0];
-
-      for (let i = 0; i < presets.length; i++) {
-        if (i === presetIndex) item = presets[i];
-      }
+      const item = presets[presetIndex];
 
       label.textContent = item.name;
       swatch.style.backgroundColor = item.color;
@@ -60,5 +55,5 @@
     update();
   </script>
 </body>
-</html
+</html>
 
