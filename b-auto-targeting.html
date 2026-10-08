@@ -44,13 +44,11 @@
 
       // Pick the living enemy with the greatest current health.
       for (const enemy of enemies) {
-        // If health is zero, that enemy is not alive.
         if (enemy.health <= 0) {
           continue;
         }
 
-        // Replace the target when this enemy has equal or greater health.
-        // This makes the later enemy win a tie.
+        // The later enemy wins a tie, preserving the accepted targeting behavior.
         if (!target || enemy.health >= target.health) {
           target = enemy;
         }
